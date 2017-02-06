@@ -29,6 +29,7 @@ module.exports = {
         },
         filePattern: 'index.html',
         maxRecentUploads: 10,
+        expire: undefined,
         distDir: function(context) {
           return context.distDir;
         },
@@ -58,6 +59,7 @@ module.exports = {
             password: pluginHelper.readConfig('password'),
             database: pluginHelper.readConfig('database'),
             maxRecentUploads: pluginHelper.readConfig('maxRecentUploads'),
+            expire: pluginHelper.readConfig('expire'),
             allowOverwrite: pluginHelper.readConfig('allowOverwrite'),
             activationSuffix: pluginHelper.readConfig('activationSuffix')
           };
@@ -76,7 +78,7 @@ module.exports = {
           ['host', 'port'].forEach(this.applyDefaultConfigProperty.bind(this));
         }
 
-        ['filePattern', 'distDir', 'keyPrefix', 'activationSuffix', 'activeContentSuffix', 'revisionKey', 'didDeployMessage', 'redisDeployClient', 'maxRecentUploads', 'revisionData'].forEach(this.applyDefaultConfigProperty.bind(this));
+        ['filePattern', 'distDir', 'keyPrefix', 'activationSuffix', 'activeContentSuffix', 'revisionKey', 'didDeployMessage', 'redisDeployClient', 'maxRecentUploads', 'expire', 'revisionData'].forEach(this.applyDefaultConfigProperty.bind(this));
 
         this.log('config ok', { verbose: true });
       },
@@ -88,6 +90,7 @@ module.exports = {
         var filePattern       = this.readConfig('filePattern');
         var keyPrefix         = this.readConfig('keyPrefix');
         var maxRecentUploads  = this.readConfig('maxRecentUploads');
+        var expire            = this.readConfig('expire');
         var filePath          = path.join(distDir, filePattern);
 
         this.log('Uploading `' + filePath + '`', { verbose: true });

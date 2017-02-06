@@ -172,6 +172,13 @@ The maximum number of recent revisions to keep in Redis.
 
 *Default:* `10`
 
+### expire
+
+Sets a timeout on the deployment key. After the timeout has expired, the key will automatically be deleted
+based on your Redis maxmemory-policy. Defaults to -1 which means no expire is set on the key.
+
+*Default:* `-1`
+
 ### revisionData
 
 Metadata about the revision being uploaded. (normally provided by a plugin like [ember-cli-deploy-revision-data][6])

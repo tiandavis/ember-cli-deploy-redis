@@ -28,5 +28,8 @@ module.exports = CoreObject.extend({
   },
   mget: function() {
     return Promise.resolve();
+  },
+  send: function(command, args) {
+    return Promise.resolve();
   }
 });

@@ -160,6 +160,10 @@ describe('redis', function() {
           });
     });
 
+    it('sets the expire on a key', function() {
+      //...
+    });
+
     describe('generating the redis key', function() {
       it('will use just the default tag if the tag is not provided', function() {
         var redisKey = null;
